@@ -25,28 +25,29 @@ function CitySearch({ navigation }) {
     }, []);
     return (
         <View style={styles.container}>
+
             <Text style={globalStyles.titel}>SEARCH BY CITY</Text>
+
+
             <TextInput
                 style={globalStyles.input}
                 onChangeText={onSearch}
                 placeholder="Enter a city"
-                pointerEvents="none"
-            />
+                pointerEvents="none" />
+            {cityData[0]?.name != cityData[0]?.countryName ?
 
-            <FlatList
-                data={cityData}
-                renderItem={({ item }) => (
-                    < TouchableOpacity
-                        onPress={() => navigation.navigate('PopulationInfo', item)}
+                <TouchableOpacity
+                    onPress={() => navigation.navigate('PopulationInfo', cityData[0])}
 
-                    >
-                        <Text style={globalStyles.icon}>
-                            <FontAwesome name="search" size={30} color="black" />
-                        </Text>
-                    </TouchableOpacity>
-                )}
 
-            />
+                >
+                    <Text style={globalStyles.icon}>
+                        <FontAwesome name="search" size={30} color="black" />
+                    </Text>
+                </TouchableOpacity>
+
+                : <Text> City doesnt exist</Text>
+            }
 
         </View>
     );

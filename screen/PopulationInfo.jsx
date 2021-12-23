@@ -8,6 +8,7 @@ function PopulationInfo({ route }) {
 
     const city = route.params.name;
     const population = route.params.population;
+    const countryName = route.params.countryName
 
 
 
@@ -31,15 +32,20 @@ function PopulationInfo({ route }) {
     // }, []);
     return (
         <View style={globalStyles.container}>
-            <Text style={globalStyles.titel}>{city}</Text>
-            <View style={styles.card}>
-                <Text >
-                    population
-                </Text>
-                <Text style={styles.titel}>
-                    {population}
-                </Text>
-            </View>
+            {city !== countryName ?
+                <>
+
+
+                    <Text style={globalStyles.titel}>{city}</Text><View style={styles.card}>
+                        <Text>
+                            population
+                        </Text>
+                        <Text style={styles.titel}>
+                            {population}
+                        </Text>
+                    </View></>
+
+                : <Text style={globalStyles.titel}> City {city} doesnt exist</Text>}
 
         </View>
     );
